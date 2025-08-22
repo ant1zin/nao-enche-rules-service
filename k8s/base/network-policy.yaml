@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rules-service-network-policy
+  namespace: nao-enche-business
+spec:
+  podSelector:
+    matchLabels:
+      app: rules-service
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: nao-enche-gateway
+    ports:
+    - protocol: TCP
+      port: 3008
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: nao-enche-core
+    ports:
+    - protocol: TCP
+      port: 3008
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: nao-enche-infra
+    ports:
+    - protocol: TCP
+      port: 5432
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53

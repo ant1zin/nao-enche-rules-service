@@ -1,0 +1,47 @@
+{
+  "name": "nao-enche-rules-service",
+  "version": "1.0.0",
+  "description": "Rules Service for NÃO ENCHE - Privacy Rules Management",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
+    "migrate": "node scripts/migrate.js",
+    "seed": "node scripts/seed.js",
+    "db:setup": "npm run migrate && npm run seed"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=10.0.0"
+  },
+  "keywords": [
+    "privacy",
+    "rules",
+    "microservice",
+    "nao-enche"
+  ],
+  "author": "NÃO ENCHE Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "cors": "^2.8.5",
+    "winston": "^3.15.0",
+    "joi": "^17.13.3",
+    "pg": "^8.13.1",
+    "express-rate-limit": "^7.4.1",
+    "prom-client": "^15.1.3",
+    "crypto": "^1.0.1",
+    "uuid": "^11.0.2",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "eslint": "^9.17.0",
+    "prettier": "^3.3.3"
+  }
+}

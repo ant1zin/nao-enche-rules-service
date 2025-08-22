@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rules-service
+  namespace: nao-enche-business
+  labels:
+    app: rules-service
+    component: microservice
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3008
+    targetPort: 3008
+    protocol: TCP
+    name: http
+  selector:
+    app: rules-service
